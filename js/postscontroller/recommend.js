@@ -11,10 +11,7 @@ function pagezz(){
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
 		
-			//向世界问个好
-			layer.ready(function() {
-				layer.msg('Hello World');
-			});
+			
 		
 			//分页
 			
@@ -79,10 +76,7 @@ function search(){
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
 		
-			//向世界问个好
-			layer.ready(function() {
-				layer.msg('Hello World');
-			});
+			
 		
 			//分页
 			
@@ -163,7 +157,10 @@ function select(page){
  */
 function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,posttext,postimg,postvideo,isaudit,createtime) {
 	
+	var postimg = toArrSrc(postimg) //将图片地址转换为数组
+	var imgFlag = openimgDiv(postimg) //动态返回查看图片按钮状态
 
+	var videoFlag = openvideoDiv(postvideo) //动态返回查看视频按钮状态
 	
 	var div = '<tr>'+
 					'<th scope="row">' + no + '</th>'+
@@ -176,7 +173,7 @@ function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,pos
 							'</ul>'+
 						'</div>'+
 					'</td>'+
-					'<td class="text-truncate">'+useravatar+'</td>'+
+		
 					'<td class="text-truncate">'+placeid+'</td>'+
 					'<td class="text-truncate">'+placename+'</td>'+
 					'<td class="text-truncate">'+like+'</td>'+
@@ -184,30 +181,14 @@ function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,pos
 					'<td class="text-truncate">'+comment+'</td>'+
 					'<td class="text-truncate">'+postid+'</td>'+
 					'<td class="text-truncate">'+posttext+'</td>'+
-					'<td class="text-truncate">'+postimg+'</td>'+
-					'<td class="text-truncate">'+postvideo+'</td>'+
+					'<td class="text-truncate">'+imgFlag+'</td>'+
+					'<td class="text-truncate">'+videoFlag+'</td>'+
 					'<td class="text-truncate">'+isaudit+'</td>'+
 					'<td class="text-truncate">'+createtime+'</td>'+
 					'<td class="text-truncate"><button class="btn btn-primary" type="button" onclick="delrecommend('+postid+')">取消推荐</button></td>'+
 			'</tr>'
 	return div
 }
-
-/**
- * 判断是否在校生类型
- * 
- * @param {Object} type
- */
-function istype(type){
-	var typeStr;
-	if(type == 1){
-		typeStr = "在校生"
-	}else if(type == 0){
-		typeStr = "毕业生"
-	}
-	return typeStr;
-}
-
 
 /**
  * 取消推荐
@@ -230,5 +211,105 @@ function delrecommend(postid) {
 	})
 }
 
+/**
+ * 将图片链接动态展示出来
+ * 
+ * @param {Object} postimg
+ */
+function parseArrSrcToLi(postimg) {
+	var label = "";
+
+	var count = 1;
+	postimg.forEach(item => {
+		var temp = '<li><a href="' + item + '" target="_blank">第' + count + '张图片</a></li>'
+		label += temp
+		count++;
+	})
+
+	console.log(label)
+
+	return label;
+}
 
 
+/**
+ * 判断是否为空格
+ */
+function isNull(str) {
+	if (str == "") return true;
+	var regu = "^[ ]+$";
+	var re = new RegExp(regu);
+	return re.test(str);
+}
+
+/**
+ * 动态返回查看图片按钮状态
+ * 
+ * @param {Object} postimg
+ */
+function openimgDiv(postimg) {
+	if (!isNull(postimg) && postimg.length != 0 && postimg[0] != undefined) {
+		var label = parseArrSrcToLi(postimg)
+
+		var div = '<div class="btn-group">' +
+			'<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"' +
+			'aria-expanded="false">查看图片 ( ' + postimg.length + ' 张 ) <span class="caret"></span></button>' +
+			'<ul class="dropdown-menu">' +
+			label +
+			'<li role="separator" class="divider"></li>' +
+			'<li><a onclick="openImg(\'' + postimg + '\')">查看全部</a></li>' +
+			'</ul>' +
+			'</div>'
+	} else {
+		var div = '<div class="btn-group">' +
+			'<button type="button" class="btn btn-primary btn-outline dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"' +
+			'aria-expanded="false">暂无图片 <span class="caret"></span></button>' +
+			'<ul class="dropdown-menu">' +
+			'<li role="separator" class="divider"></li>' +
+			'<li>别看啦 没有图片</li>' +
+			'</ul>' +
+			'</div>'
+	}
+
+	return div
+}
+
+/**
+ * 将图片地址转换成数组对象
+ * 
+ * @param {Object} postimg
+ */
+function toArrSrc(postimg) {
+	if (postimg != null && postimg.indexOf("[") == 0) {
+		var arr = JSON.parse(postimg);
+	} else {
+		var arr = []
+		arr.push(postimg)
+	}
+	return arr
+}
+/**
+ * 动态返回查看视频按钮状态
+ * 
+ * @param {Object} postimg
+ */
+function openvideoDiv(Video) {
+	if (!isNull(Video) && Video != undefined) {
+		var div = '<button class="btn btn-primary" type="button" onclick="openVideo(\'' + Video + '\')">查看视频</button>'
+	} else {
+
+		var div = '<button class="btn btn-primary btn-outline" type="button">暂无视频</button>'
+	}
+	return div
+}
+
+
+
+/**
+ * 查看帖子视频
+ * 
+ * @param {Object} postimg
+ */
+function openVideo(video) {
+	window.open(video);
+}
