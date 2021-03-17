@@ -47,7 +47,6 @@ function Logout() {
 	var r = confirm("确定要退出登录吗?");
 	if (r == true) {
 		clearCookie("token")
-
 		alert("退出成功")
 		window.location.href = "../../index.html";;
 	} else {
