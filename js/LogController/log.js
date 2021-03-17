@@ -89,7 +89,7 @@ function add(no,rootid,rootname,rootavatar,content,ip) {
 						'</div>'+
 					'</td>'+
 					'<td class="text-truncate">'+rootid+'</td>'+
-					'<td class="text-truncate">'+rootavatar+'</td>'+
+
 					'<td class="text-truncate">'+content+'</td>'+
 					'<td class="text-truncate">'+ip+'</td>'+
 					
