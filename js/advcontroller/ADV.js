@@ -113,7 +113,7 @@ function deladv(aid) {
 
 
 function pagezz(){
-	var size = 1
+	var size = 10
 	mypost(getadvcount, {}, function(data) {
 		console.log("获取总用户数")
 		console.log(data)
@@ -142,7 +142,7 @@ function pagezz(){
 }
 
 function pageword(){
-	var size = 1
+	var size = 10
 	if($("#placeholderInput").val().length!=0){
 	mypost(getadvcount, {word:$("#placeholderInput").val()}, function(data) {
 		console.log("获取总用户数")
