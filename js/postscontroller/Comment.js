@@ -39,18 +39,18 @@ function search() {
 	if ($("#placeholderInput").val().length == 0) {
 		getinfo()
 	} else {
-		mypost(getPostingInfoPart, {
+		mypost(getPostComment, {
 			token: getCookie("token"),
-			word: $("#placeholderInput").val()
+			word: $("#placeholderInput").val(),
+			postid:GetQueryString("postid")
 		}, function(data) {
 			console.log(data)
 			if (data.code == 200) {
 				var count = 1;
-				data.data.comments.forEach(item => {
-					var temp = count++;
-					$("tbody").append(add(temp, item.type, item.posttext, item.postimg, item.postvideo, item.createtime,
-						item.postid, item.placa.placaname, item.userinfo.uname, item.userinfo.useravatar))
-				})
+			data.data.comments.forEach(item => {
+				var temp = count++;
+				$("tbody").append(add(temp, item.commentid,item.commenttext,item.createtime,item.likecount,item.userinfo.uname,item.userinfo.useravatar));
+			})
 			} else if (data.code == -1) {
 				alert("暂无数据,将查询所有...")
 				getinfo()
@@ -122,8 +122,8 @@ function delComment(no) {
 }
 
 function pagezz(){
-	var size = 10
-	mypost(getCheckedCount, {}, function(data) {
+	var size = 1
+	mypost(getPostCommentCount, {postid:GetQueryString("postid")}, function(data) {
 		console.log("获取总用户数")
 		console.log(data)
 		layui.use(['laypage', 'layer'], function() {
@@ -148,4 +148,37 @@ function pagezz(){
 			});
 		});
 	})
+}
+
+function pageword(){
+	var size = 10
+	if($("#placeholderInput").val().length!=0){
+	mypost(getPostCommentCount, {word:$("#placeholderInput").val(),postid:GetQueryString("postid")}, function(data) {
+		console.log("获取总用户数")
+		console.log(data)
+		layui.use(['laypage', 'layer'], function() {
+			var laypage = layui.laypage //分页 
+			var layer = layui.layer //弹层
+			//分页
+			laypage.render({
+				elem: 'pageDemo', //分页容器的id
+				count: data.data, //数据总数量
+				limit: size,
+				skin: '#1E9FFF', //自定义选中色值
+				//,skip: true //开启跳页
+				jump: function(obj, first) {
+					$("#tbody").empty()
+					search(obj.curr,size)
+					if (!first) {
+						layer.msg('第' + obj.curr + '页', {
+							offset: 'b'
+						});
+					}
+				}
+			});
+		});
+	})
+	}else{
+		pagezz()
+	}
 }

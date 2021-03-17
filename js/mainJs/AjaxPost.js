@@ -60,6 +60,7 @@ var getPostingInfo = "/api/post/checking/getinfo"//获取待审核的所有帖�
 var auditPostInfo ="/api/post/checking/auditpost"//审核指定帖子
 var getPostingInfoPart = "/api/post/checking/getinfopart" //获取待审核的部分帖子
 var getInfopartpostCount ="/api/post/checking/getInfopartpostCount"//部分待审核帖子数量
+var getPostCommentCount = "/api/post/checked/getpostCommentCount";
 
 //6 : 广告管理
 var getADVInfo = "/api/adv/getinfo";//6.1 : 获取广告信息
