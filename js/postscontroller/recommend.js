@@ -6,7 +6,7 @@ $(function() {
 
 
 function pagezz(){
-	mypost(getInfoPartcount, {}, function(data) {
+	mypost1(getInfoPartcount, {}, function(data) {
 		layui.use(['laypage', 'layer'], function() {
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
@@ -71,7 +71,7 @@ function search(){
 		location.reload();
 	}else{
 		
-	mypost(getInfoPart, {word:$("#placeholderInput").val()}, function(data) {
+	mypost1(getInfoPart, {word:$("#placeholderInput").val()}, function(data) {
 		layui.use(['laypage', 'layer'], function() {
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
@@ -195,7 +195,7 @@ function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,pos
  * 
  */
 function delrecommend(postid) {
-	mypost(setdelrecommend, {
+	mypost1(setdelrecommend, {
 		token: getCookie("token"),
 		postid:postid,
 	}, function(data) {

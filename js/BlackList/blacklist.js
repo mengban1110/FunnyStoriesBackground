@@ -14,10 +14,6 @@ function pagez(){
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
 		
-			//向世界问个好
-			layer.ready(function() {
-				layer.msg('Hello World');
-			});
 		
 			//分页
 			laypage.render({
@@ -78,7 +74,7 @@ function search(){
 		location.reload();
 	}else{
 		
-	mypost(getInfoblacklist, {word:$("#placeholderInput").val()}, function(data) {
+	mypost1(getInfoblacklist, {word:$("#placeholderInput").val()}, function(data) {
 		layui.use(['laypage', 'layer'], function() {
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
@@ -169,7 +165,7 @@ function add(no,bid,userid,username,useravatar,createtime) {
 					'</td>'+
 					'<td class="text-truncate">'+bid+'</td>'+
 					'<td class="text-truncate">'+userid+'</td>'+
-					'<td class="text-truncate">'+useravatar+'</td>'+
+				
 					'<td class="text-truncate">'+createtime+'</td>'+
 					
 					'<td class="text-truncate"><button class="btn btn-primary" type="button" onclick="delinfo('+userid+')">取消黑名单</button></td>'+
@@ -183,7 +179,7 @@ function add(no,bid,userid,username,useravatar,createtime) {
  * 
  */
 function delinfo(userid) {
-	mypost(setblack, {
+	mypost1(setblack, {
 		token: getCookie("token"),
 		userid:userid,
 	}, function(data) {

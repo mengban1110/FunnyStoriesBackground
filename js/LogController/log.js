@@ -10,15 +10,10 @@ function pagezzz(){
 	
 	
 	var getusercount ="/api/adv/GetHistoryPage";
-	mypost(getusercount, {}, function(data) {
+	mypost1(getusercount, {}, function(data) {
 		layui.use(['laypage', 'layer'], function() {
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层
-		
-			//向世界问个好
-			layer.ready(function() {
-				layer.msg('Hello World');
-			});
 		
 			//分页
 			laypage.render({
