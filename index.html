@@ -62,22 +62,32 @@
         function loginz() {
             var managerName = $("#managerName").val();
             var password = $("#managerPassword").val();
-
-            mypost(login, {
-                rootname: managerName,
-                rootpassword: password
-            }, function(data) {
-                console.log(data)
-                if (data.code == 200) {
-                    var token = data.data.token;
-                    addCookie("token", token, 1)
-                    window.location.href = "pages/Dashboard/dashboard.html";
-                } else if (data.code == -1) {
-                    alert("用户或密码错误")
-                } else {
-                    alert("请输入用户名密码")
-                }
-            },"POST");
+			if(managerName==""){
+				alert("请输入用户名");
+			}else if(password==""){
+				alert("请输入密码");
+			}else{
+				var login = "/api/controller/login";
+				mypost(login, {
+					rootname: managerName,
+					rootpassword: password
+				}, function(data) {
+					console.log(data)
+					if (data.code == 200) {
+						var token = data.data.token;
+						var managername = data.data.managername;
+						var manageravatar = data.data.manageravatar;
+						addCookie("token", token, 1)
+						addCookie("managername", managername, 1)
+						addCookie("manageravatar", manageravatar, 1)
+						window.location.href = "pages/BackgroundController/background.html";
+					} else {
+						
+						alert("用户名或密码错误")
+						
+					}
+				},"POST");
+			}
         }
     </script>
 

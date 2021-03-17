@@ -14,11 +14,11 @@ $(function() {
 /**
  * 重启服务器
  */
-function restartOs() {
+function restart() {
 	var r = confirm("确定要重启服务器吗?");
 	if (r == true) {
 		$.ajax({
-			url: domain + osRestart,
+			url: domain + restartServer,
 			data: {
 				token: getCookie("token")
 			},
@@ -40,34 +40,6 @@ function restartOs() {
 	}
 }
 
-/**
- * 重启Tomcat
- */
-function restartTomcat() {
-	var r = confirm("确定要重启Tomcat吗?");
-	if (r == true) {
-		$.ajax({
-			url: domain + tomcatRestart,
-			data: {
-				token: getCookie("token")
-			},
-			type: 'POST',
-			dataType: 'JSON',
-			timeout: 5000, //超时时间设置， 单位毫秒
-			async: true, //是否异步
-			success: function(data) {
-				clearCookie("token")
-				alert("正在重启Tomcat 请稍后尝试登录后台服务...")
-			},
-			error: function() {
-				//异常处理；  
-				alert('error : 服务器内部错误');
-			}
-		});
-	} else {
-
-	}
-}
 /**
  * 退出登录
  */
@@ -139,6 +111,32 @@ function eiditUser() {
 				window.location.href = "users.html";
 			} else {
 				alert("修改失败");
+			}
+		}
+	})
+}
+
+function addADV(){
+	
+	var formzz = document.getElementById('form1');
+	var formData = new FormData(formzz);
+	formData.append("path", $("#myfile").get(0).files[0]);
+	formData.set('token', getCookie("token"));
+	formData.set('acontext',$("#input_acontext").val());
+	
+	$.ajax({
+		url: domain + postADV,
+		type: "post",
+		data: formData,
+		processData: false,
+		contentType: false,
+		success: function(data) {
+			if (data.code == 200) {
+				alert("发布成功");
+				$("#tbody").empty();
+				getinfo();
+			} else {
+				alert("发布失败");
 			}
 		}
 	})

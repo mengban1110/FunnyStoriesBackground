@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Aso-后台管理系统</title>
-
+		
 		<!-- BootstrapCss -->
 		<!-- <link rel="stylesheet" href="../../module/bootstrap/css/bootstrap.min.css"> -->
 		<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -31,18 +31,9 @@
 		<!-- MyJs -->
 		<script src="../../js/mainJs/AjaxPost.js"></script>
 		<script src="../../js/mainJs/Cookies.js"></script>
-		<script src="../../js/AdminRead.js"></script>
-		<script src="../../js/userscontroller/Page.js"></script>
+		<script src="../../js/BackgroundController/background.js"></script>
 
 	</head>
-
-	<style type="text/css">
-		.add {
-			display: flex;
-			float: right;
-			margin-top: -30px;
-		}
-	</style>
 
 	<body class="sidebar-mini">
 		<div class="wrapper">
@@ -88,41 +79,31 @@
 					<!-- Sidebar Menu -->
 					<ul class="sidebar-menu" data-widget="tree">
 						<li class="header dark-bg">Menu</li>
-						<li class="treeview"> <a href="#"> <i class="fa fa-dashboard"></i> <span>Dashboard</span><span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i> </span> </a>
-							<ul class="treeview-menu">
-								<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-angle-right"></i> Dashboard</a></li>
-							</ul>
-						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>AppController</span>
+						
+						<li class="treeview active"><a href="#"><i class="fa fa-cogs"></i> <span>BackgroundController</span>
 								<span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu">
-								<li><a href="../AppController/Register.html"><i class="fa fa-angle-right"></i> Register</a></li>
-								<li><a href="../AppController/Login.html"><i class="fa fa-angle-right"></i> Login</a></li>
-								<li><a href="../AppController/Notice.html"><i class="fa fa-angle-right"></i> Notice</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i> Version</a></li>
-								<li><a href="../AppController/Update.html"><i class="fa fa-angle-right"></i> Update</a></li>
-								<li><a href="../AppController/SchoolInfo.html"><i class="fa fa-angle-right"></i> SchoolInfo</a></li>
+								<li class="active"><a href="../BackgroundController/background.html"><i class="fa fa-angle-right"></i> background</a></li>
+							
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-paper-plane-o"></i> <span>PostsController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="	fa fa-paper-plane-o"></i> <span>BlackList</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="#"><i class="fa fa-angle-right"></i> Posts</a></li>
-								<li><a href="../PostsController/Posting.html"><i class="fa fa-angle-right"></i> Posting</a></li>
+								<li><a href="../BlackList/blacklist.html"><i class="fa fa-angle-right"></i> blacklist</a></li>
 							</ul>
 						</li>
-						<li class="treeview active"><a href="#"><i class="fa fa-user"></i> <span>UsersController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-user"></i> <span>LogController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="../UsersController/Users.html"><i class="fa fa-angle-right"></i> Users</a></li>
+								<li><a href="../LogController/log.html"><i class="fa fa-angle-right"></i> log</a></li>
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-desktop"></i> <span>ServerController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>PostsController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li><a href="#" onclick="restart()"><i class="fa fa-angle-right"></i> ServerRestart</a></li>
+								<li><a href="../PostsController/recommend.html"><i class="fa fa-angle-right"></i> recommend</a></li>
 							</ul>
 						</li>
 						<li><a href="#" onclick="Logout()"> Logout</a></li>
@@ -135,11 +116,11 @@
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1>用户管理</h1>
+					<h1>后台限制控制</h1>
 					<ol class="breadcrumb">
 						<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-home"></i> Menu</a></li>
-						<li><i class="fa fa-user"></i> UsersController</li>
-						<li class="active"><i></i> Users</li>
+						<li><i class="fa fa-cogs"></i> AppController</li>
+						<li class="active"><i></i> Login</li>
 					</ol>
 				</section>
 
@@ -147,85 +128,74 @@
 				<section class="content container-fluid">
 					<div class="col-md-12">
 						<div class="chart-box">
-							<form enctype="multipart/form-data" id="form1" method="post">
-							<h4>正在修改用户信息... <code id="codezz"> userid : </code></h4>
+							
 							<p>&nbsp;</p>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-6">
 										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改用户名</h4>
-												<input class="form-control" id="input_username" placeholder="" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改密码</h4>
-												<input class="form-control" id="input_password" placeholder="如果不填写，则为不改变源码" type="text" >
-											</fieldset>
+											<h4>限制注册</h4>
+											<p>限制之后,平台禁止任何形式的注册</p>
+											<p>当前状态 : <span style="color: red;" id="Registerstatus">null</span></p>
+											<button class="btn btn-primary" type="button" onclick="Register(1)">限制注册</button>
+											<button type="button" class="btn btn-danger" onclick="Register(0)">取消限制</button>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改性别</h4>
-												<input class="form-control" id="input_usersex" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改生日</h4>
-												<input class="form-control" id="input_userbir" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改个性标签</h4>
-												<input class="form-control" id="input_usersign" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改用户状态</h4>
-												<input class="form-control" id="input_userstatus" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改头像</h4>
-												<input class="" id="myfile"  type="file" >
-											</fieldset>
+											<h4>限制登录</h4>
+											<p>限制之后,平台禁止任何形式的登录</p>
+											<p>当前状态 : <span style="color: red;" id="Loginstatus">null</span></p>
+											<button class="btn btn-primary" type="button" onclick="Login(1)">限制登录</button>
+											<button type="button" class="btn btn-danger" onclick="Login(0)">取消限制</button>
 										</div>
 									</div>
 								</div>
-
+				
 								<p>&nbsp;</p>
-
+				
 								<div class="col-md-12">
 									<div class="col-md-6">
 										<div class="chart-box">
-											<input type="button" class="btn btn-primary" style="margin-top: 0.625rem;" value="修改" onclick="eiditUser()">
+											<h4>限制发帖</h4>
+											<p>限制之后,平台禁止任何形式的发帖</p>
+											<p>当前状态 : <span style="color: red;" id="Poststatus">null</span></p>
+											<button class="btn btn-primary" type="button" onclick="Post(1)">限制发帖</button>
+											<button type="button" class="btn btn-danger" onclick="Post(0)">取消限制</button>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="chart-box">
+											<h4>限制评论</h4>
+											<p>限制之后,平台禁止任何形式的评论</p>
+											<p>当前状态 : <span style="color: red;" id="Commentstatus">null</span></p>
+											<button class="btn btn-primary" type="button" onclick="Comment(1)">限制评论</button>
+											<button type="button" class="btn btn-danger" onclick="Comment(0)">取消限制</button>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="chart-box">
+											<h4>限制网站运营</h4>
+											<p>限制之后,平台关闭</p>
+											<p>当前状态 : <span style="color: red;" id="poststatusstatus">null</span></p>
+											<button class="btn btn-primary" type="button" onclick="poststatus(1)">限制网站运营</button>
+											<button type="button" class="btn btn-danger" onclick="poststatus(0)">取消网站运营</button>
 										</div>
 									</div>
 								</div>
+								
 							</div>
 						</div>
 					</div>
-					</form>
 				</section>
 				<!-- content -->
+				
+				
+				
+				
+				
+				
+				
 			</div>
 			<!-- content-wrapper -->
 
@@ -236,6 +206,7 @@
 			</footer>
 		</div>
 		<!-- wrapper -->
+		
 		<script src="../../js/AdminRead.js"></script>
 	</body>
 </html>

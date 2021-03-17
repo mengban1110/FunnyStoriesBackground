@@ -8,6 +8,9 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Aso-后台管理系统</title>
 
+		<link href="https://www.layuicdn.com/layui/css/layui.css" rel="stylesheet">
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+
 		<!-- BootstrapCss -->
 		<!-- <link rel="stylesheet" href="../../module/bootstrap/css/bootstrap.min.css"> -->
 		<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +33,8 @@
 		<script src="../../module/dist/js/ovio.js"></script>
 
 		<!-- MyJs -->
+
+		
 		<script src="../../js/mainJs/AjaxPost.js"></script>
 		<script src="../../js/mainJs/Cookies.js"></script>
 		<script src="../../js/userscontroller/Users.js"></script>
@@ -149,8 +154,7 @@
 						<li class="treeview"><a href="#"><i class="fa fa-desktop"></i> <span>ServerController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li><a href="#" onclick="restartOs()"><i class="fa fa-angle-right"></i> ServerRestart</a></li>
-								<li><a href="#" onclick="restartTomcat()"><i class="fa fa-angle-right"></i> ServerTomcat</a></li>
+								<li><a href="#" onclick="restart()"><i class="fa fa-angle-right"></i> ServerRestart</a></li>
 							</ul>
 						</li>
 						<li><a href="#" onclick="Logout()"> Logout</a></li>
@@ -179,10 +183,18 @@
 								<p>点击<code>修改</code>可修改对应用户相关信息...</p>
 								<div id="example_filter" class="dataTables_filter">
 									<input class="form-control" id="placeholderInput" placeholder="条件查询">
-									<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="search()">搜索</button>
+									<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="pageword()">搜索</button>
 								</div>
 							</div>
 							<div class="bs-example">
+								
+								<!-- 分页器 -->
+								<div id="example_filter" class="pull-right">
+									<div class="bs-example">
+										<div id="pageDemo"></div>
+									</div>
+								</div>
+								
 								<table class="tables table-responsive">
 									<thead>
 										<tr>

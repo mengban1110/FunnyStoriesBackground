@@ -121,7 +121,9 @@ function delComment(no) {
 
 function pagezz(){
 	var size = 10
-	mypost(getCheckingCount, {}, function(data) {
+	mypost(getCheckedCount, {}, function(data) {
+		console.log("获取总用户数")
+		console.log(data)
 		layui.use(['laypage', 'layer'], function() {
 			var laypage = layui.laypage //分页 
 			var layer = layui.layer //弹层

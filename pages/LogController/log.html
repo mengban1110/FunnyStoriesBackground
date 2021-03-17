@@ -11,7 +11,6 @@
 		<link href="https://www.layuicdn.com/layui/css/layui.css" rel="stylesheet">
 		<script src="https://www.layuicdn.com/layui/layui.js"></script>
 
-
 		<!-- BootstrapCss -->
 		<!-- <link rel="stylesheet" href="../../module/bootstrap/css/bootstrap.min.css"> -->
 		<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +36,9 @@
 		<script src="../../js/mainJs/AjaxPost.js"></script>
 		<script src="../../js/mainJs/Cookies.js"></script>
 
-		<script src="../../js/postscontroller/Posts.js"></script>
+		<script src="../../js/LogController/log.js"></script>
+
+
 		<style>
 			#tbody th {
             vertical-align: middle;
@@ -61,11 +62,18 @@
             right: 0;
             max-width: 200px;
         }
+        
+        tr {
+            border-bottom: #8caaff solid 1px;
+        }
+		th{
+			text-align: center;
+		}
+		td{
+			text-align: center;
+		}
     </style>
-
-	</head>
-
-	<body class="sidebar-mini">
+<body class="sidebar-mini">
 		<div class="wrapper">
 
 			<!-- Main Header -->
@@ -87,9 +95,8 @@
 						<ul class="nav navbar-nav">
 							<!-- Tasks Menu -->
 							<!-- User Account Menu -->
-							<li class="dropdown user user-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../../module/dist/img/img1.jpg" class="user-image"
-									 alt="User Image" id="Ravatar"> <span class="hidden-xs" id="Rname">null</span> </a>
+							<li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../../module/dist/img/img1.jpg"
+									 class="user-image" alt="User Image" id="Ravatar"> <span class="hidden-xs" id="Rname">null</span> </a>
 							</li>
 						</ul>
 					</div>
@@ -110,43 +117,31 @@
 					<!-- Sidebar Menu -->
 					<ul class="sidebar-menu" data-widget="tree">
 						<li class="header dark-bg">Menu</li>
-						<li class="treeview">
-							<a href="#"> <i class="fa fa-dashboard"></i> <span>Dashboard</span><span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i> </span> </a>
-							<ul class="treeview-menu">
-								<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-angle-right"></i> Dashboard</a></li>
-							</ul>
-						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>AppController</span>
+						
+						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>BackgroundController</span>
 								<span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu">
-								<li><a href="../AppController/Register.html"><i class="fa fa-angle-right"></i> Register</a></li>
-								<li><a href="../AppController/Login.html"><i class="fa fa-angle-right"></i> Login</a></li>
-								<li><a href="../AppController/Notice.html"><i class="fa fa-angle-right"></i> Notice</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i> Version</a></li>
-								<li><a href="../AppController/Update.html"><i class="fa fa-angle-right"></i> Update</a></li>
-								<li><a href="../AppController/SchoolInfo.html"><i class="fa fa-angle-right"></i> SchoolInfo</a></li>
+								<li><a href="../BackgroundController/background.html"><i class="fa fa-angle-right"></i> background</a></li>
+						
 							</ul>
 						</li>
-						<li class="treeview active"><a href="#"><i class="fa fa-paper-plane-o"></i> <span>PostsController</span> <span
-								 class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-paper-plane-o"></i> <span>BlackList</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="../PostsController/Posts.html"><i class="fa fa-angle-right"></i> Posts</a></li>
-								<li><a href="../PostsController/Posting.html"><i class="fa fa-angle-right"></i> Posting</a></li>
+								<li><a href="../BlackList/blacklist.html"><i class="fa fa-angle-right"></i> blacklist</a></li>
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-user"></i> <span>UsersController</span> <span class="pull-right-container">
+						<li class="treeview active"><a href="#"><i class="fa fa-user"></i> <span>LogController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li><a href="../UsersController/Users.html"><i class="fa fa-angle-right"></i> Users</a></li>
+								<li class="active"><a href="../LogController/log.html"><i class="fa fa-angle-right"></i> log</a></li>
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-desktop"></i> <span>ServerController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-user"></i> <span>PostsController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li><a href="#" onclick="restart()"><i class="fa fa-angle-right"></i> ServerRestart</a></li>
+								<li><a href="../PostsController/recommend.html"><i class="fa fa-angle-right"></i> recommend</a></li>
 							</ul>
 						</li>
 						<li><a href="#" onclick="Logout()"> Logout</a></li>
@@ -154,83 +149,66 @@
 					<!-- sidebar-menu -->
 				</section>
 			</aside>
-
-			<!-- Content Wrapper. Contains page content -->
-			<div class="content-wrapper">
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<h1>帖子管理</h1>
-					<ol class="breadcrumb">
-						<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-home"></i> Menu</a></li>
-						<li><i class="fa fa-paper-plane-o"></i> PostsController</li>
-						<li class="active"><i></i> Posts</li>
-					</ol>
-				</section>
-
-				<!-- Main content -->
-				<section class="content container-fluid">
-					<div class="col-md-12">
-						<div class="chart-box">
-							<div>
-								<h4>审核通过的帖子</h4>
-								<p>点击<code>删除</code>可删除对应帖子...</p>
-								<div id="example_filter" class="dataTables_filter">
-									<input class="form-control" id="placeholderInput" placeholder="条件查询">
-									<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="pageword()">搜索</button>
-								</div>
-							</div>
-							<div class="bs-example">
-								<!-- 分页器 -->
-								<div id="example_filter" class="pull-right">
-									<div class="bs-example">
-										<div id="pageDemo"></div>
-									</div>
-								</div>
-								
-								<table class="tables table-responsive">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th class="sortable">所属板块</th>
-											<th class="sortable">帖子类型</th>
-											<th class="sortable">帖子文本</th>
-											<th class="sortable">帖子图片</th>
-											<th class="sortable">帖子视频</th>
-											<th class="sortable">发帖时间</th>
-											<th class="sortable">点赞</th>
-											<th class="sortable">转发</th>
-											<th class="sortable">评论</th>
-											<th class="sortable">发帖人</th>
-											<th class="sortable">操作</th>
-										</tr>
-									</thead>
-									<tbody id="tbody">
-
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-				</section>
-				<!-- content -->
-			</div>
-			<!-- content-wrapper -->
-
-			<!-- Main Footer -->
-			<footer class="main-footer dark-bg">
-				<div class="pull-right hidden-xs"> Version 1.0</div>
-				Copyright &copy; 2017 Yourdomian. All rights reserved.
-			</footer>
-		</div>
-		<!-- wrapper -->
-		<script src="../../js/AdminRead.js"></script>
-		<script src="../../module/plugins/tables/jquery.tablesort.js"></script>
-		<script type="text/javascript">
-			(function($) {
-				"use strict";
-				$("table").tablesort();
-			})(jQuery);
-		</script>
-	</body>
+       <!-- Content Wrapper. Contains page content -->
+       		<div class="content-wrapper">
+       			<!-- Content Header (Page header) -->
+       			<section class="content-header">
+       				<h1>后台日志</h1>
+       				<ol class="breadcrumb">
+       					<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-home"></i> Menu</a></li>
+       					<li><i class="fa fa-user"></i> UsersController</li>
+       					<li class="active"><i></i> Users</li>
+       				</ol>
+       			</section>
+       
+       			<section class="content container-fluid">
+       				<div class="col-md-12">
+       					<div class="chart-box">
+       						
+       						</div>
+       						<div class="bs-example">
+       							<table class="tables table-responsive">
+       
+       								<!-- 分页器 -->
+       								<div id="example_filter" class="pull-right">
+       									<div class="bs-example">
+       										<div id="pageDemo"></div>
+       									</div>
+       								</div>
+       
+       								<thead>
+       									<tr>
+       										<th>#</th>
+											<th class="sortable">管理员姓名</th>
+       										<th class="sortable">管理员id</th>
+       										<th class="sortable">管理员头像</th>
+       										
+       										<th class="sortable">操作内容</th>
+       										<th class="sortable">IP地址</th>
+       										
+       									</tr>
+       								</thead>
+       								<tbody id="tbody">
+       
+       								</tbody>
+       							</table>
+       						</div>
+       					</div>
+       				</div>
+       
+       			</section>
+       			<!-- content -->
+       		</div>
+       		<!-- content-wrapper -->
+       
+       		<!-- Main Footer -->
+       		<footer class="main-footer dark-bg">
+       			<div class="pull-right hidden-xs"> Version 1.0</div>
+       			Copyright &copy; 2017 Yourdomian. All rights reserved.
+       		</footer>
+       	</div>
+       	<!-- wrapper -->
+       	<script src="../../js/AdminRead.js"></script>
+       </body>
+       
 </html>

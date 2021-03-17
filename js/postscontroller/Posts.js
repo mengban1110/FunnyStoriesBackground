@@ -33,7 +33,7 @@ function getinfo(page,size) {
 /**
  * 条件查询
  */
-function search(page,size) {
+function search() {
 
 	$("#tbody").empty()
 
@@ -42,9 +42,7 @@ function search(page,size) {
 	} else {
 		mypost(getCheckedInfoPart, {
 			token: getCookie("token"),
-			word: $("#placeholderInput").val(),
-			size:size,
-			page:page
+			word: $("#placeholderInput").val()
 		}, function(data) {
 			console.log(data)
 			if (data.code == 200) {
@@ -328,8 +326,38 @@ function getcomment(no){
 }
 
 function pagezz(){
-	var size = 3
+	var size = 1
 	mypost(getCheckedCount, {}, function(data) {
+		console.log("获取总用户数")
+		console.log(data)
+		layui.use(['laypage', 'layer'], function() {
+			var laypage = layui.laypage //分页 
+			var layer = layui.layer //弹层
+			//分页
+			laypage.render({
+				elem: 'pageDemo', //分页容器的id
+				count: data.data, //数据总数量
+				limit: size,
+				skin: '#1E9FFF', //自定义选中色值
+				//,skip: true //开启跳页
+				jump: function(obj, first) {
+					$("#tbody").empty()
+					getinfo(obj.curr,size)
+					if (!first) {
+						layer.msg('第' + obj.curr + '页', {
+							offset: 'b'
+						});
+					}
+				}
+			});
+		});
+	})
+}
+
+function pageword(){
+	var size = 1
+	if($("#placeholderInput").val().length!=0){
+	mypost(getCheckedCount, {word:$("#placeholderInput").val()}, function(data) {
 		console.log("获取总用户数")
 		console.log(data)
 		layui.use(['laypage', 'layer'], function() {
@@ -354,4 +382,7 @@ function pagezz(){
 			});
 		});
 	})
+	}else{
+		pagezz()
+	}
 }

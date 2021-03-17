@@ -1,14 +1,12 @@
 $(function() {
-
-	// getinfo()
-	pagezz()
+	pagezz();
 })
 
 /**
- * 获取帖子信息
+ * 获取广告信息
  */
 function getinfo(page,size) {
-	mypost(getUsersInfo, {
+	mypost(getADVInfo, {
 		token: getCookie("token"),
 		size:size,
 		page:page
@@ -16,17 +14,13 @@ function getinfo(page,size) {
 		console.log(data)
 		if (data.code == 200) {
 			var count = 1;
-			console.log("获取用户信息")
 			console.log(data)
-			data.data.users.forEach(item => {
+			data.data.advert.forEach(item => {
 				var temp = count++;
-				$("tbody").append(add(temp,item.userid,
-											   item.username,
-											   item.useravatar,
-											   item.usersex,
-											   item.userbir,
-											   item.email,
-											   item.usersign))
+				$("tbody").append(add(temp,item.aid,
+											   item.aimg,
+											   item.acontext,
+											   item.createtime))
 			})
 		} else {
 			alert("请重新登录验证身份!")
@@ -38,31 +32,27 @@ function getinfo(page,size) {
 /**
  * 条件查询
  */
-function search(page,size){
+function search(){
 	
 	$("#tbody").empty()
 	
 	if($("#placeholderInput").val().length == 0){
 		getinfo();
 	}else{
-		mypost(getUsersInfo, {
+		mypost(getADVInfo, {
 			token: getCookie("token"),
-			word: $("#placeholderInput").val(),
-			size:size,
-			page:page
+			word: $("#placeholderInput").val()
 		}, function(data) {
 			if (data.code == 200) {
 				var count = 1;
-				data.data.users.forEach(item => {
-					var temp = count++;
-					$("tbody").append(add(temp,item.userid,
-											   item.username,
-											   item.useravatar,
-											   item.usersex,
-											   item.userbir,
-											   item.email,
-											   item.usersign))
-				})
+			console.log(data)
+			data.data.advert.forEach(item => {
+				var temp = count++;
+				$("tbody").append(add(temp,item.aid,
+											   item.aimg,
+											   item.acontext,
+											   item.createtime))
+			})
 			} else if(data.code == -1) {
 				alert("暂无数据,将查询所有...")
 				getinfo()
@@ -72,32 +62,31 @@ function search(page,size){
 			}
 		},"GET")
 	}
+	
+	
 }
 
 /**
- * 动态生成用户数据
+ * 动态生成广告数据
  */
-function add(no,userid,username,useravatar,usersex,userbir,email,usersign) {
+function add(no,aid,aimg,acontext,createtime) {
 	
 	
 	var div = '<tr>'+
 					'<th scope="row">' + no + '</th>'+
-					'<td class="text-truncate">'+userid+'</td>'+
+					'<td class="text-truncate">'+aid+'</td>'+
 					'<td class="text-truncate">'+
 						'<div class="navbar-custom-menu">'+
 							'<ul class="nav navbar-nav">'+
-								'<li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="'+useravatar+'"'+
-										'class="user-image" alt="User Image" id="Ravatar"> <span class="hidden-xs" id="Rname">'+username+'</span> </a>'+
+								'<li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="'+aimg+'"'+
+										'class="user-image" alt="User Image" id="Ravatar"></a>'+
 								'</li>'+
 							'</ul>'+
 						'</div>'+
 					'</td>'+
-					'<td class="text-truncate">'+usersex+'</td>'+
-					'<td class="text-truncate">'+userbir+'</td>'+
-					'<td class="text-truncate">'+email+'</td>'+
-					'<td class="text-truncate">'+usersign+'</td>'+
-					'<td class="text-truncate"><button class="btn btn-primary" type="button" onclick="goPage('+userid+')">修改</button>'+
-					'<button class="btn btn-primary" type="button" onclick="godel('+userid+')">删除</button>'+
+					'<td class="text-truncate">'+acontext+'</td>'+
+					'<td class="text-truncate">'+createtime+'</td>'+
+					'<td class="text-truncate"><button class="btn btn-primary" type="button" onclick="deladv('+aid+')">删除</button>'+
 					'</td>'+
 			'</tr>'
 	return div
@@ -106,15 +95,11 @@ function add(no,userid,username,useravatar,usersex,userbir,email,usersign) {
 
 
 /**
- * 跳转修改页面
+ * 删除广告
  * 
  */
-function goPage(userid) {
-	window.location.href = 'Page.html?userid='+userid;
-}
-
-function godel(userid){
-	mypost(delUserData,{"uid":userid,"token":getCookie("token")},function(data){
+function deladv(aid) {
+	mypost(delADV,{"aid":aid,"token":getCookie("token")},function(data){
 		console.log(data);
 		if(data.code == 200){
 			alert("删除成功");
@@ -129,7 +114,7 @@ function godel(userid){
 
 function pagezz(){
 	var size = 1
-	mypost(getusercount, {}, function(data) {
+	mypost(getadvcount, {}, function(data) {
 		console.log("获取总用户数")
 		console.log(data)
 		layui.use(['laypage', 'layer'], function() {
@@ -155,10 +140,11 @@ function pagezz(){
 		});
 	})
 }
+
 function pageword(){
 	var size = 1
 	if($("#placeholderInput").val().length!=0){
-	mypost(getusercount, {word:$("#placeholderInput").val()}, function(data) {
+	mypost(getadvcount, {word:$("#placeholderInput").val()}, function(data) {
 		console.log("获取总用户数")
 		console.log(data)
 		layui.use(['laypage', 'layer'], function() {

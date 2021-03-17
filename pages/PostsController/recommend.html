@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Aso-后台管理系统</title>
+
+		<link href="https://www.layuicdn.com/layui/css/layui.css" rel="stylesheet">
+		<script src="https://www.layuicdn.com/layui/layui.js"></script>
 
 		<!-- BootstrapCss -->
 		<!-- <link rel="stylesheet" href="../../module/bootstrap/css/bootstrap.min.css"> -->
@@ -31,18 +35,45 @@
 		<!-- MyJs -->
 		<script src="../../js/mainJs/AjaxPost.js"></script>
 		<script src="../../js/mainJs/Cookies.js"></script>
-		<script src="../../js/AdminRead.js"></script>
-		<script src="../../js/userscontroller/Page.js"></script>
 
-	</head>
+		<script src="../../js/postscontroller/recommend.js"></script>
 
-	<style type="text/css">
-		.add {
-			display: flex;
-			float: right;
-			margin-top: -30px;
+
+		<style>
+			#tbody th {
+            vertical-align: middle;
+        }
+        
+        #tbody td {
+            vertical-align: middle;
+        }
+        
+        .tables {
+            min-width: 1282px;
+            width: 100%;
+        }
+        
+        .bs-example {
+            overflow: auto;
+        }
+        
+        .dataTables_filter {
+            top: 0;
+            right: 0;
+            max-width: 200px;
+        }
+        
+        tr {
+            border-bottom: #8caaff solid 1px;
+        }
+		th{
+			text-align: center;
 		}
-	</style>
+		td{
+			text-align: center;
+		}
+    </style>
+	</head>
 
 	<body class="sidebar-mini">
 		<div class="wrapper">
@@ -66,8 +97,9 @@
 						<ul class="nav navbar-nav">
 							<!-- Tasks Menu -->
 							<!-- User Account Menu -->
-							<li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../../module/dist/img/img1.jpg"
-									 class="user-image" alt="User Image" id="Ravatar"> <span class="hidden-xs" id="Rname">null</span> </a>
+							<li class="dropdown user user-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../../module/dist/img/img1.jpg" class="user-image"
+									 alt="User Image" id="Ravatar"> <span class="hidden-xs" id="Rname">null</span> </a>
 							</li>
 						</ul>
 					</div>
@@ -88,41 +120,31 @@
 					<!-- Sidebar Menu -->
 					<ul class="sidebar-menu" data-widget="tree">
 						<li class="header dark-bg">Menu</li>
-						<li class="treeview"> <a href="#"> <i class="fa fa-dashboard"></i> <span>Dashboard</span><span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i> </span> </a>
-							<ul class="treeview-menu">
-								<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-angle-right"></i> Dashboard</a></li>
-							</ul>
-						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>AppController</span>
+						
+						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>BackgroundController</span>
 								<span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu">
-								<li><a href="../AppController/Register.html"><i class="fa fa-angle-right"></i> Register</a></li>
-								<li><a href="../AppController/Login.html"><i class="fa fa-angle-right"></i> Login</a></li>
-								<li><a href="../AppController/Notice.html"><i class="fa fa-angle-right"></i> Notice</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i> Version</a></li>
-								<li><a href="../AppController/Update.html"><i class="fa fa-angle-right"></i> Update</a></li>
-								<li><a href="../AppController/SchoolInfo.html"><i class="fa fa-angle-right"></i> SchoolInfo</a></li>
+								<li><a href="../BackgroundController/background.html"><i class="fa fa-angle-right"></i> background</a></li>								<li><a href="../AppController/Page.html"><i class="fa fa-angle-right"></i> Page</a></li>
+								
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-paper-plane-o"></i> <span>PostsController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-paper-plane-o"></i> <span>BlackList</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="#"><i class="fa fa-angle-right"></i> Posts</a></li>
-								<li><a href="../PostsController/Posting.html"><i class="fa fa-angle-right"></i> Posting</a></li>
+								<li><a href="../BlackList/blacklist.html"><i class="fa fa-angle-right"></i> blacklist</a></li>
 							</ul>
 						</li>
-						<li class="treeview active"><a href="#"><i class="fa fa-user"></i> <span>UsersController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-user"></i> <span>LogController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="../UsersController/Users.html"><i class="fa fa-angle-right"></i> Users</a></li>
+								<li><a href="../LogController/log.html"><i class="fa fa-angle-right"></i> log</a></li>
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-desktop"></i> <span>ServerController</span> <span class="pull-right-container">
+						<li class="treeview active"><a href="#"><i class="fa fa-user"></i> <span>PostsController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li><a href="#" onclick="restart()"><i class="fa fa-angle-right"></i> ServerRestart</a></li>
+								<li class="active"><a href="../PostsController/recommend.html"><i class="fa fa-angle-right"></i> recommend</a></li>
 							</ul>
 						</li>
 						<li><a href="#" onclick="Logout()"> Logout</a></li>
@@ -135,7 +157,7 @@
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1>用户管理</h1>
+					<h1>推荐的帖子</h1>
 					<ol class="breadcrumb">
 						<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-home"></i> Menu</a></li>
 						<li><i class="fa fa-user"></i> UsersController</li>
@@ -143,87 +165,55 @@
 					</ol>
 				</section>
 
-				<!-- Main content -->
 				<section class="content container-fluid">
 					<div class="col-md-12">
 						<div class="chart-box">
-							<form enctype="multipart/form-data" id="form1" method="post">
-							<h4>正在修改用户信息... <code id="codezz"> userid : </code></h4>
-							<p>&nbsp;</p>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改用户名</h4>
-												<input class="form-control" id="input_username" placeholder="" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改密码</h4>
-												<input class="form-control" id="input_password" placeholder="如果不填写，则为不改变源码" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改性别</h4>
-												<input class="form-control" id="input_usersex" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改生日</h4>
-												<input class="form-control" id="input_userbir" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改个性标签</h4>
-												<input class="form-control" id="input_usersign" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改用户状态</h4>
-												<input class="form-control" id="input_userstatus" type="text" >
-											</fieldset>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="chart-box">
-											<fieldset class="form-group">
-												<h4>修改头像</h4>
-												<input class="" id="myfile"  type="file" >
-											</fieldset>
-										</div>
-									</div>
-								</div>
+							<div>
+								<h4>推荐帖子的信息</h4>
+								<p>点击<code>取消推荐</code>可修改对应用户相关信息...</p>
+								<div id="example_filter" class="dataTables_filter">
+									<input class="form-control" id="placeholderInput" placeholder="条件查询">
+									<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="search()">搜索</button>
 
-								<p>&nbsp;</p>
+								</div>
+							</div>
+							<div class="bs-example">
+								<table class="tables table-responsive">
 
-								<div class="col-md-12">
-									<div class="col-md-6">
-										<div class="chart-box">
-											<input type="button" class="btn btn-primary" style="margin-top: 0.625rem;" value="修改" onclick="eiditUser()">
+									<!-- 分页器 -->
+									<div id="example_filter" class="pull-right">
+										<div class="bs-example">
+											<div id="pageDemo"></div>
 										</div>
 									</div>
-								</div>
+
+									<thead>
+										<tr>
+											<th>#</th>
+											<th class="sortable">发帖人姓名</th>
+											<th class="sortable">用户头像</th>
+											<th class="sortable">发帖板块id</th>
+											<th class="sortable">板块名</th>
+											<th class="sortable">点赞数</th>
+											<th class="sortable">分享数</th>
+											<th class="sortable">评论数</th>
+											<th class="sortable">帖子ID</th>
+											<th class="sortable">文本</th>
+											<th class="sortable">图片</th>
+											<th class="sortable">视频</th>
+											<th class="sortable">是否审核(1审核,0未审核)</th>
+											<th class="sortable">时间</th>
+											<th class="sortable">操作</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">
+
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
-					</form>
+
 				</section>
 				<!-- content -->
 			</div>
@@ -238,4 +228,5 @@
 		<!-- wrapper -->
 		<script src="../../js/AdminRead.js"></script>
 	</body>
+
 </html>
