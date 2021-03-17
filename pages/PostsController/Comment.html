@@ -36,7 +36,40 @@
 		<script src="../../js/mainJs/Cookies.js"></script>
 
 		<script src="../../js/postscontroller/Comment.js"></script>
-
+		<style>
+			#tbody th {
+            vertical-align: middle;
+        }
+        
+        #tbody td {
+            vertical-align: middle;
+        }
+        
+        .tables {
+            min-width: 1282px;
+            width: 100%;
+        }
+        
+        .bs-example {
+            overflow: auto;
+        }
+        
+        .dataTables_filter {
+            top: 0;
+            right: 0;
+            max-width: 200px;
+        }
+        
+        tr {
+            border-bottom: #8caaff solid 1px;
+        }
+		th{
+			text-align: center;
+		}
+		td{
+			text-align: center;
+		}
+    </style>
 	</head>
 
 	<body class="sidebar-mini">
@@ -101,7 +134,8 @@
 								<li class=""><a href="../ADVController/ADVs.html"><i class="fa fa-angle-right"></i> 广告管理中心</a></li>
 							</ul>
 						</li>
-						<li class="treeview active"><a href="#"><i class="	fa fa-paper-plane-o"></i> <span>PostsController</span> <span class="pull-right-container">
+						<li class="treeview active"><a href="#"><i class="	fa fa-paper-plane-o"></i> <span>PostsController</span> <span
+								 class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
 								<li class="active"><a href="../PostsController/Posts.html"><i class="fa fa-angle-right"></i> 审核通过帖子管理中心</a></li>
@@ -150,39 +184,43 @@
 				<section class="content container-fluid">
 					<div class="col-md-12">
 						<div class="chart-box">
+							<h4>正在查看帖子评论...<code id="codezz"></code></h4>
 							<p>点击<code>删除</code>可删除对应评论...</p>
-							<div id="example_filter" class="dataTables_filter pull-right">
+							<div id="example_filter" class="dataTables_filter">
 								<input class="form-control" id="placeholderInput" placeholder="条件查询">
 								<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="search()">搜索</button>
 							</div>
-							
-							<!-- 分页器 -->
-							<div id="example_filter" class="pull-right">
-								<div class="bs-example">
-									<div id="pageDemo"></div>
+
+							<div class="bs-example">
+								<!-- 分页器 -->
+								<div id="example_filter" class="pull-right">
+									<div class="bs-example">
+										<div id="pageDemo"></div>
+									</div>
 								</div>
 							</div>
 							
-							<table class="table table-responsive">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th class="sortable">评论id</th>
-										<th class="sortable">评论用户</th>
-										<th class="sortable">评论信息</th>
-										<th class="sortable">评论时间</th>
-										<th class="sortable">评论点赞</th>
-										<th class="sortable">操作</th>
-									</tr>
-								</thead>
-								<tbody id="tbody">
-				
-								</tbody>
-							</table>
-				
+							<div class="bs-example">
+								<table class="table table-responsive">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th class="sortable">评论id</th>
+											<th class="sortable">评论用户</th>
+											<th class="sortable">评论信息</th>
+											<th class="sortable">评论时间</th>
+											<th class="sortable">评论点赞</th>
+											<th class="sortable">操作</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">
+
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
-				
+
 				</section>
 				<!-- content -->
 			</div>

@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Aso-后台管理系统</title>
-	<link href="https://www.layuicdn.com/layui/css/layui.css" rel="stylesheet">
+		<link href="https://www.layuicdn.com/layui/css/layui.css" rel="stylesheet">
 		<script src="https://www.layuicdn.com/layui/layui.js"></script>
 		<!-- BootstrapCss -->
 		<!-- <link rel="stylesheet" href="../../module/bootstrap/css/bootstrap.min.css"> -->
@@ -34,7 +34,30 @@
 		<script src="../../js/mainJs/Cookies.js"></script>
 
 		<script src="../../js/postscontroller/Posting.js"></script>
-
+		<style>
+			#tbody th {
+		    vertical-align: middle;
+		}
+		
+		#tbody td {
+		    vertical-align: middle;
+		}
+		
+		.tables {
+		    min-width: 1282px;
+		    width: 100%;
+		}
+		
+		.bs-example {
+		    overflow: auto;
+		}
+		
+		.dataTables_filter {
+		    top: 0;
+		    right: 0;
+		    max-width: 200px;
+		}
+		</style>
 	</head>
 
 	<body class="sidebar-mini">
@@ -99,7 +122,8 @@
 								<li class=""><a href="../ADVController/ADVs.html"><i class="fa fa-angle-right"></i> 广告管理中心</a></li>
 							</ul>
 						</li>
-						<li class="treeview active"><a href="#"><i class="	fa fa-paper-plane-o"></i> <span>PostsController</span> <span class="pull-right-container">
+						<li class="treeview active"><a href="#"><i class="	fa fa-paper-plane-o"></i> <span>PostsController</span> <span
+								 class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
 								<li class=""><a href="../PostsController/Posts.html"><i class="fa fa-angle-right"></i> 审核通过帖子管理中心</a></li>
@@ -151,10 +175,11 @@
 							<h4>待审核的帖子</h4>
 							<p>点击<code>删除</code>可删除对应帖子...</p>
 							<p>点击<code>审核通过</code>可审核对应帖子...</p>
-							<div id="example_filter" class="dataTables_filter pull-left">
+							<div id="example_filter" class="dataTables_filter ">
 								<input class="form-control" id="placeholderInput" placeholder="条件查询">
 								<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="searchPagezz()">搜索</button>
 							</div>
+							
 							<div class="bs-example">
 								<!-- 分页器 -->
 								<div id="example_filter" class="pull-right">
@@ -162,28 +187,32 @@
 										<div id="pageDemo"></div>
 									</div>
 								</div>
-							<table class="table table-responsive text-center">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th class="sortable text-center">所属板块</th>
-										<th class="sortable text-center">帖子类型</th>
-										<th class="sortable text-center">帖子文本</th>
-										<th class="sortable text-center">帖子图片</th>
-										<th class="sortable text-center">帖子视频</th>
-										<th class="sortable text-center">发帖时间</th>
-										<th class="sortable text-center">发帖人</th>
-										<th class="sortable text-center">操作</th>
-									</tr>
-								</thead>
-								<tbody id="tbody">
-				
-								</tbody>
-							</table>
-				
+							</div>
+							
+
+							<div class="bs-example">
+								<table class="table table-responsive text-center">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th class="sortable text-center">所属板块</th>
+											<th class="sortable text-center">帖子类型</th>
+											<th class="sortable text-center">帖子文本</th>
+											<th class="sortable text-center">帖子图片</th>
+											<th class="sortable text-center">帖子视频</th>
+											<th class="sortable text-center">发帖时间</th>
+											<th class="sortable text-center">发帖人</th>
+											<th class="sortable text-center">操作</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">
+
+									</tbody>
+								</table>
+
+							</div>
 						</div>
-					</div>
-				
+
 				</section>
 				<!-- content -->
 			</div>

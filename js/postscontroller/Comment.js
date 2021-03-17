@@ -2,6 +2,8 @@ $(function() {
 	// alert(getCookie("token"))
 	// getinfo();
 	pagezz();
+	var postid = GetQueryString("postid")
+	$("#codezz").text(" postid : " +postid)
 })
 
 /**
