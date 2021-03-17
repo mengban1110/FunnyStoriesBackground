@@ -154,17 +154,18 @@ function add(no,bid,userid,username,useravatar,createtime) {
 	
 	var div = '<tr>'+
 					'<th scope="row">' + no + '</th>'+
+					'<td class="text-truncate">'+bid+'</td>'+
+					'<td class="text-truncate">'+userid+'</td>'+
 					'<td class="text-truncate">'+
 						'<div class="navbar-custom-menu">'+
-							'<ul class="nav navbar-nav">'+
+							'<ul class="nav navbar-nav" id="tx">'+
 								'<li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="'+useravatar+'"'+
 										'class="user-image" alt="User Image" id="Ravatar"> <span class="hidden-xs" id="Rname">'+username+'</span> </a>'+
 								'</li>'+
 							'</ul>'+
 						'</div>'+
 					'</td>'+
-					'<td class="text-truncate">'+bid+'</td>'+
-					'<td class="text-truncate">'+userid+'</td>'+
+					
 				
 					'<td class="text-truncate">'+createtime+'</td>'+
 					

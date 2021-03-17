@@ -73,7 +73,9 @@ function add(no,rootid,rootname,rootavatar,content,ip) {
 	
 	
 	var div = '<tr>'+
+	
 					'<th scope="row">' + no + '</th>'+
+					'<td class="text-truncate">'+rootid+'</td>'+
 					'<td class="text-truncate">'+
 						'<div class="navbar-custom-menu">'+
 							'<ul class="nav navbar-nav">'+
@@ -83,7 +85,7 @@ function add(no,rootid,rootname,rootavatar,content,ip) {
 							'</ul>'+
 						'</div>'+
 					'</td>'+
-					'<td class="text-truncate">'+rootid+'</td>'+
+					
 
 					'<td class="text-truncate">'+content+'</td>'+
 					'<td class="text-truncate">'+ip+'</td>'+

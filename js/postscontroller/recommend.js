@@ -164,6 +164,9 @@ function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,pos
 	
 	var div = '<tr>'+
 					'<th scope="row">' + no + '</th>'+
+					
+					'<td class="text-truncate">'+placename+'</td>'+
+					'<td class="text-truncate">'+placeid+'</td>'+
 					'<td class="text-truncate">'+
 						'<div class="navbar-custom-menu">'+
 							'<ul class="nav navbar-nav">'+
@@ -174,8 +177,7 @@ function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,pos
 						'</div>'+
 					'</td>'+
 		
-					'<td class="text-truncate">'+placeid+'</td>'+
-					'<td class="text-truncate">'+placename+'</td>'+
+					
 					'<td class="text-truncate">'+like+'</td>'+
 					'<td class="text-truncate">'+share+'</td>'+
 					'<td class="text-truncate">'+comment+'</td>'+
