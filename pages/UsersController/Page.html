@@ -91,38 +91,47 @@
 						<li class="treeview"> <a href="#"> <i class="fa fa-dashboard"></i> <span>Dashboard</span><span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu">
-								<li><a href="../Dashboard/Dashboard.html"><i class="fa fa-angle-right"></i> Dashboard</a></li>
+								<li class=""><a href="../Dashboard/Dashboard.html"><i class="fa fa-angle-right"></i> 数据展示</a></li>
 							</ul>
 						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>AppController</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-left pull-right"></i> </span> </a>
-							<ul class="treeview-menu">
-								<li><a href="../AppController/Register.html"><i class="fa fa-angle-right"></i> Register</a></li>
-								<li><a href="../AppController/Login.html"><i class="fa fa-angle-right"></i> Login</a></li>
-								<li><a href="../AppController/Notice.html"><i class="fa fa-angle-right"></i> Notice</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i> Version</a></li>
-								<li><a href="../AppController/Update.html"><i class="fa fa-angle-right"></i> Update</a></li>
-								<li><a href="../AppController/SchoolInfo.html"><i class="fa fa-angle-right"></i> SchoolInfo</a></li>
-							</ul>
-						</li>
-						<li class="treeview"><a href="#"><i class="fa fa-paper-plane-o"></i> <span>PostsController</span> <span class="pull-right-container">
+						<li class="treeview"><a href="#"><i class="fa fa-cogs"></i> <span>WebController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="#"><i class="fa fa-angle-right"></i> Posts</a></li>
-								<li><a href="../PostsController/Posting.html"><i class="fa fa-angle-right"></i> Posting</a></li>
+								<li class=""><a href="../BackgroundController/background.html"><i class="fa fa-angle-right"></i> 网站控制中心</a></li>
+							</ul>
+						</li>
+						<li class="treeview "><a href="#"><i class="fa fa-bullhorn"></i> <span>AbvController</span> <span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i> </span> </a>
+							<ul class="treeview-menu ">
+								<li class=""><a href="../ADVController/ADVs.html"><i class="fa fa-angle-right"></i> 广告管理中心</a></li>
+							</ul>
+						</li>
+						<li class="treeview "><a href="#"><i class="	fa fa-paper-plane-o"></i> <span>PostsController</span> <span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i> </span> </a>
+							<ul class="treeview-menu ">
+								<li class=""><a href="../PostsController/Posts.html"><i class="fa fa-angle-right"></i> 审核通过帖子管理中心</a></li>
+								<li class=""><a href="../PostsController/Posting.html"><i class="fa fa-angle-right"></i> 待审核帖子管理中心</a></li>
+								<li class=""><a href="../PostsController/recommend.html"><i class="fa fa-angle-right"></i> 推荐帖子管理中心</a></li>
 							</ul>
 						</li>
 						<li class="treeview active"><a href="#"><i class="fa fa-user"></i> <span>UsersController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li class="active"><a href="../UsersController/Users.html"><i class="fa fa-angle-right"></i> Users</a></li>
+								<li class="active"><a href="../UsersController/Users.html"><i class="fa fa-angle-right"></i> 用户管理中心</a></li>
+								<li class=""><a href="../BlackList/blacklist.html"><i class="fa fa-angle-right"></i> 黑名单管理中心</a></li>
+							</ul>
+						</li>
+						<li class="treeview"><a href="#"><i class="fa fa-eye"></i> <span>LogController</span> <span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i> </span> </a>
+							<ul class="treeview-menu ">
+								<li class=""><a href="../LogController/log.html"><i class="fa fa-angle-right"></i> 后台日志中心</a></li>
 							</ul>
 						</li>
 						<li class="treeview"><a href="#"><i class="fa fa-desktop"></i> <span>ServerController</span> <span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i> </span> </a>
 							<ul class="treeview-menu ">
-								<li><a href="#" onclick="restart()"><i class="fa fa-angle-right"></i> ServerRestart</a></li>
+								<li class=""><a href="#" onclick="restartOs()"><i class="fa fa-angle-right"></i> 重启OS</a></li>
+								<li class=""><a href="#" onclick="restartTomcat()"><i class="fa fa-angle-right"></i> 重启Tomcat</a></li>
 							</ul>
 						</li>
 						<li><a href="#" onclick="Logout()"> Logout</a></li>
