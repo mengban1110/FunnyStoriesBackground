@@ -66,7 +66,7 @@ function getstatus() {
 function Login(type) {
 	console.log("type" + type);
 	
-	mypost(setLogin, {
+	mypost1(setLogin, {
 		token: getCookie("token"),
 		status: type,
 	}, function(data) {
@@ -80,7 +80,7 @@ function Login(type) {
  */
 function Post(type) {
 	console.log("type" + type)
-	mypost(setUserPost, {
+	mypost1(setUserPost, {
 		token: getCookie("token"),
 
 		status: type
@@ -97,7 +97,7 @@ function Post(type) {
  */
 function Comment(type) {
 	console.log("type" + type)
-	mypost(setUserComment, {
+	mypost1(setUserComment, {
 		token: getCookie("token"),
 	
 		status: type
@@ -113,7 +113,7 @@ function Comment(type) {
 function poststatus(type) {
 	console.log("type" + type);
 	
-	mypost(setpoststatus, {
+	mypost1(setpoststatus, {
 		token: getCookie("token"),
 		status: type,
 	}, function(data) {
@@ -128,7 +128,7 @@ function poststatus(type) {
 function Register(type) { 
 
 	console.log("type" + type)
-	mypost(setRegister, {
+	mypost1(setRegister, {
 		token: getCookie("token"),
 		status: type,
 	}, function(data) {

@@ -123,7 +123,31 @@ function myget(api, parameters, callback) {
         }
     });
 }
-
+/**
+ * 封装ajax
+ * 
+ * @param {Object} api
+ * @param {Object} parameters
+ * @param {Object} callback
+ */
+function mypost1(api, parameters, callback) {
+    console.log("-------------------------")
+    console.log("请求地址 : " + domain + api)
+    $.ajax({
+        url: domain + api,
+        data: parameters,
+        type: 'POST',
+        dataType: 'JSON',
+        timeout: 5000, //超时时间设置， 单位毫秒
+        async: true, //是否异步
+        success: callback,
+        error: function() {
+            //异常处理；  
+            console.log('error : 服务器内部错误');
+            console.log("-------------------------")
+        }
+    });
+}
 
 
 
