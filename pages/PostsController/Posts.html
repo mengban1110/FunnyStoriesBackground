@@ -61,6 +61,21 @@
             right: 0;
             max-width: 200px;
         }
+        
+        tr {
+            border-bottom: #8caaff solid 1px;
+        }
+		
+		th,td{
+			text-align: center;
+		}
+		
+		.text-truncate{
+			padding: 1.25rem 0;
+		}
+		.bs-example{
+			padding-bottom: 5.875rem;
+		}
     </style>
 
 	</head>
@@ -203,6 +218,7 @@
 									<thead>
 										<tr>
 											<th>#</th>
+											<th class="sortable">帖子id</th>
 											<th class="sortable">所属板块</th>
 											<th class="sortable">帖子类型</th>
 											<th class="sortable">帖子文本</th>
@@ -214,6 +230,8 @@
 											<th class="sortable">评论</th>
 											<th class="sortable">发帖人</th>
 											<th class="sortable">操作</th>
+											<th class="sortable"></th>
+											<th class="sortable"></th>
 										</tr>
 									</thead>
 									<tbody id="tbody">
@@ -239,10 +257,6 @@
 		<script src="../../js/AdminRead.js"></script>
 		<script src="../../module/plugins/tables/jquery.tablesort.js"></script>
 		<script type="text/javascript">
-			(function($) {
-				"use strict";
-				$("table").tablesort();
-			})(jQuery);
 		</script>
 	</body>
 </html>

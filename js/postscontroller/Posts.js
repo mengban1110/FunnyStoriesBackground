@@ -91,6 +91,7 @@ function add(no, type, posttext, postimg, postvideo, createtime, postid, placana
 
 	var div = '<tr>' +
 		'<th scope="row">' + no + '</th>' +
+		'<td class="text-truncate">' + postid + '</td>' +
 		'<td class="text-truncate">' + placaname + '</td>' +
 		'<td class="text-truncate">' + type + '</td>' +
 		'<td class="text-truncate">' + posttext + '</td>' +
