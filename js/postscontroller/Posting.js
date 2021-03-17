@@ -131,7 +131,7 @@ function audit(no,auditNum) {
 		if(data.code==200){
 			alert("审核成功");
 			$("#tbody").empty();
-			pagezz();
+			getinfo()
 		}else{
 			alert("审核成功");
 		}
