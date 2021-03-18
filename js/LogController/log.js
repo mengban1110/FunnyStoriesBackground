@@ -55,7 +55,7 @@ function getinfo(page) {
 			data.data.logs.forEach(item => {
 				
 				var temp = count++;
-				$("tbody").append(add(temp,item.rootid,item.rootname,item.rootavatar,item.content,item.ip))
+				$("tbody").append(add(temp,item.rootid,item.rootname,item.rootavatar,item.content,item.ip,format(item.createtime*1000)))
 			})
 		} else {
 			alert("请重新登录验证身份!")
@@ -69,7 +69,7 @@ function getinfo(page) {
  * 
 
  */
-function add(no,rootid,rootname,rootavatar,content,ip) {
+function add(no,rootid,rootname,rootavatar,content,ip,createtime) {
 	
 	
 	var div = '<tr>'+
@@ -86,8 +86,9 @@ function add(no,rootid,rootname,rootavatar,content,ip) {
 						'</div>'+
 					'</td>'+
 					
-
+					'<td class="text-truncate">'+createtime+'</td>'+
 					'<td class="text-truncate">'+content+'</td>'+
+					
 					'<td class="text-truncate">'+ip+'</td>'+
 					
 					
@@ -97,3 +98,16 @@ function add(no,rootid,rootname,rootavatar,content,ip) {
 
 
 
+function add0(m){return m<10?'0'+m:m }
+function format(shijianchuo)
+{
+//shijianchuo是整数，否则要parseInt转换
+var time = new Date(shijianchuo);
+var y = time.getFullYear();
+var m = time.getMonth()+1;
+var d = time.getDate();
+var h = time.getHours();
+var mm = time.getMinutes();
+var s = time.getSeconds();
+return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+}

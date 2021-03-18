@@ -8,6 +8,10 @@
 		<title>Aso-后台管理系统</title>
 		<link href="https://www.layuicdn.com/layui/css/layui.css" rel="stylesheet">
 		<script src="https://www.layuicdn.com/layui/layui.js"></script>
+		
+		
+		
+		
 		<!-- BootstrapCss -->
 		<!-- <link rel="stylesheet" href="../../module/bootstrap/css/bootstrap.min.css"> -->
 		<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -56,6 +60,21 @@
 		    top: 0;
 		    right: 0;
 		    max-width: 200px;
+		}
+		
+		tr {
+		    border-bottom: #8caaff solid 1px!important;
+		}
+		
+		th,td{
+			text-align: center!important;
+		}
+		
+		.text-truncate{
+			padding: 1.25rem 0 !important;
+		}
+		.bs-example{
+			padding-bottom: 5.875rem!important;
 		}
 		</style>
 	</head>
@@ -179,30 +198,28 @@
 								<input class="form-control" id="placeholderInput" placeholder="条件查询">
 								<button class="btn btn-success btn-block" type="button" style="margin:0.625rem 0rem;" onclick="searchPagezz()">搜索</button>
 							</div>
-							
+
 							<div class="bs-example">
 								<!-- 分页器 -->
 								<div id="example_filter" class="pull-right">
-									<div class="bs-example">
 										<div id="pageDemo"></div>
-									</div>
 								</div>
 							</div>
-							
+
 
 							<div class="bs-example">
-								<table class="table table-responsive text-center">
+								<table class="table table-responsive">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th class="sortable text-center">所属板块</th>
-											<th class="sortable text-center">帖子类型</th>
-											<th class="sortable text-center">帖子文本</th>
-											<th class="sortable text-center">帖子图片</th>
-											<th class="sortable text-center">帖子视频</th>
-											<th class="sortable text-center">发帖时间</th>
-											<th class="sortable text-center">发帖人</th>
-											<th class="sortable text-center">操作</th>
+											<th>所属板块</th>
+											<th>帖子类型</th>
+											<th>帖子文本</th>
+											<th>帖子图片</th>
+											<th>帖子视频</th>
+											<th>发帖时间</th>
+											<th>发帖人</th>
+											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody id="tbody">
@@ -226,12 +243,6 @@
 		</div>
 		<!-- wrapper -->
 		<script src="../../js/AdminRead.js"></script>
-		<script src="../../module/plugins/tables/jquery.tablesort.js"></script>
-		<script type="text/javascript">
-			(function($) {
-				"use strict";
-				$("table").tablesort();
-			})(jQuery);
-		</script>
+
 	</body>
 </html>
