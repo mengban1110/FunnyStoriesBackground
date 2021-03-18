@@ -315,3 +315,19 @@ function openvideoDiv(Video) {
 function openVideo(video) {
 	window.open(video);
 }
+
+
+/**
+ * 查看帖子图片
+ * 
+ * @param {Object} postimg
+ */
+function openImg(postimgs) {
+	var arr = postimgs.split(',')
+	console.log(arr)
+	arr.forEach(item => {
+		window.open(item);
+	})
+	alert("已显示 " + arr.length + " 张图片")
+}
+
