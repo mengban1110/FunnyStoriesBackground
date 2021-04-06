@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	// getinfo();
 	pagezz();
 	var postid = GetQueryString("postid")
@@ -11,7 +11,7 @@ $(function() {
  */
 function getinfo(page,size) {
 	mypost(getPostComment, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		size:size,
 		page:page,
 		postid:GetQueryString("postid")
@@ -40,7 +40,7 @@ function search() {
 		getinfo()
 	} else {
 		mypost(getPostComment, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val(),
 			postid:GetQueryString("postid")
 		}, function(data) {
@@ -108,7 +108,7 @@ function add(no, commentid,commenttext,createtime,likecount,uname,useravatar) {
  */
 function delComment(no) {
 	mypost(delPostComment, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		commentid: no
 	}, function(data) {
 		console.log(data);

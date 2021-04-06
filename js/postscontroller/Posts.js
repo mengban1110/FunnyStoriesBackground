@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	// getinfo();
 	pagezz();
 })
@@ -9,7 +9,7 @@ $(function() {
  */
 function getinfo(page,size) {
 	mypost(getCheckedInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		size:size,
 		page:page
 	}, function(data) {
@@ -41,7 +41,7 @@ function search() {
 		getinfo()
 	} else {
 		mypost(getCheckedInfoPart, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val()
 		}, function(data) {
 			console.log(data)
@@ -288,7 +288,7 @@ function openVideo(video) {
  */
 function delPost(no) {
 	mypost(delPostInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		postid: no
 	}, function(data) {
 		console.log(data);
@@ -308,7 +308,7 @@ function delPost(no) {
  */
 function checkedPost(no) {
 	mypost(commendPost, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		postid: no
 	}, function(data) {
 		console.log(data);

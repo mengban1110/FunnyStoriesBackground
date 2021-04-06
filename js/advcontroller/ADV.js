@@ -7,7 +7,7 @@ $(function() {
  */
 function getinfo(page,size) {
 	mypost(getADVInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		size:size,
 		page:page
 	}, function(data) {
@@ -40,7 +40,7 @@ function search(){
 		getinfo();
 	}else{
 		mypost(getADVInfo, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val()
 		}, function(data) {
 			if (data.code == 200) {
@@ -93,7 +93,7 @@ function add(no,aid,aimg,acontext,createtime) {
  * 
  */
 function deladv(aid) {
-	mypost(delADV,{"aid":aid,"token":getCookie("token")},function(data){
+	mypost(delADV,{"aid":aid,"token":getCookie("roottoken")},function(data){
 		console.log(data);
 		if(data.code == 200){
 			alert("删除成功");

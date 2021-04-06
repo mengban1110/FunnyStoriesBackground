@@ -3,12 +3,12 @@
 	
 
 $(function() {
-	var token = getCookie("token")
+	var token = getCookie("roottoken")
 	console.log(token)
 	mypost(getpostpartcount, {
 		token: token
 	}, function(data) {
-		console.log(getCookie("token"))
+		console.log(getCookie("roottoken"))
 		console.log(data)
 		if (data.code == 200) {
 			var thiz = data.data

@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	pagezz()
 	
 })
@@ -44,7 +44,7 @@ function pagezz(){
  */
 function getinfo(page) {
 	myget(getRecommendInfo, {
-		token: getCookie("token"), 
+		token: getCookie("roottoken"), 
 		size:10,
 		page:page
 	}, function(data) {
@@ -111,7 +111,7 @@ function select(page){
 		getinfo()
 	}else{
 		myget(getRecommendInfoPart, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val(),
 			size:10,
 			page:page,
@@ -198,7 +198,7 @@ function add(no,uname,useravatar,placeid,placename,like,share,comment,postid,pos
  */
 function delrecommend(postid) {
 	mypost1(setdelrecommend, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		postid:postid,
 	}, function(data) {
 		

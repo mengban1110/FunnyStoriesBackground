@@ -11,7 +11,7 @@ $(function() {
  */
 // function changePassword() {
 // 	mypost(setUserKey, {
-// 		token: getCookie("token"),
+// 		token: getCookie("roottoken"),
 // 		uid: useridz,
 // 		password: $("#basicInput").val()
 // 	}, function(data) {
@@ -34,7 +34,7 @@ $(function() {
  */
 function getLoginstatus() {
 	mypost(getUserData, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		uid: useridz
 	}, function(data) {
 		if (data.code == 200) {
@@ -60,7 +60,7 @@ function getLoginstatus() {
 // function Login(type) {
 // 	console.log("type" + type)
 // 	mypost(setUserLogin, {
-// 		token: getCookie("token"),
+// 		token: getCookie("roottoken"),
 // 		userid: useridz,
 // 		status: type
 // 	}, function(data) {
@@ -76,7 +76,7 @@ function getLoginstatus() {
  */
 // function getPoststatus() {
 // 	mypost(getUserPost, {
-// 		token: getCookie("token"),
+// 		token: getCookie("roottoken"),
 // 		userid: useridz
 // 	}, function(data) {
 // 		console.log(data)
@@ -103,7 +103,7 @@ function getLoginstatus() {
 // function Post(type) {
 // 	console.log("type" + type)
 // 	mypost(setUserPost, {
-// 		token: getCookie("token"),
+// 		token: getCookie("roottoken"),
 // 		userid: useridz,
 // 		status: type
 // 	}, function(data) {
@@ -119,7 +119,7 @@ function getLoginstatus() {
 //  */
 // function getCommentstatus() {
 // 	mypost(getUserComment, {
-// 		token: getCookie("token"),
+// 		token: getCookie("roottoken"),
 // 		userid: useridz
 // 	}, function(data) {
 // 		console.log(data)
@@ -146,7 +146,7 @@ function getLoginstatus() {
 // function Comment(type) {
 // 	console.log("type" + type)
 // 	mypost(setUserComment, {
-// 		token: getCookie("token"),
+// 		token: getCookie("roottoken"),
 // 		userid: useridz,
 // 		status: type
 // 	}, function(data) {

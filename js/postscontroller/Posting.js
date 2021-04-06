@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	pagezz();
 })
 
@@ -8,7 +8,7 @@ $(function() {
  */
 function getinfo(page,size) {
 	mypost(getPostingInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		page:page,
 		size:size
 		
@@ -38,7 +38,7 @@ function search(page,size) {
 		getinfo()
 	} else {
 		mypost(getPostingInfoPart, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val(),
 			page:page,
 			size:size
@@ -123,7 +123,7 @@ function add(no, type, posttext, postimg, postvideo, createtime, postid, placana
  */
 function audit(no,auditNum) {
 	mypost(auditPostInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		postid: no,
 		audit:auditNum
 	}, function(data) {
@@ -299,7 +299,7 @@ function openVideo(video) {
  */
 function delPost(no) {
 	mypost(delPostsInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		postid: no
 	}, function(data) {
 		alert("删除成功")
@@ -314,7 +314,7 @@ function delPost(no) {
  */
 function auditPost(no) {
 	mypost(auditPosting, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		postid: no
 	}, function(data) {
 		alert("审核成功")

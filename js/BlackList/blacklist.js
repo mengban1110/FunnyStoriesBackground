@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	pagez()
 	
 })
@@ -45,7 +45,7 @@ function pagez(){
  */
 function getinfo(page) {
 	myget(getBlackInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		word: $("#placeholderInput").val(),
 		size:10,
 		page:page
@@ -117,7 +117,7 @@ function select(page){
 		getinfo()
 	}else{
 		myget(getBlackInfo, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val(),
 			size:10,
 			page:page,
@@ -181,7 +181,7 @@ function add(no,bid,userid,username,useravatar,createtime) {
  */
 function delinfo(userid) {
 	mypost1(setblack, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		userid:userid,
 	}, function(data) {
 		

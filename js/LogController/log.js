@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	pagezzz()
 	
 })
@@ -45,7 +45,7 @@ function pagezzz(){
  */
 function getinfo(page) {
 	myget(getloginfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		size:10,
 		page:page
 	}, function(data) {

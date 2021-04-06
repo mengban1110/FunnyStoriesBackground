@@ -1,5 +1,5 @@
 $(function() {
-	// alert(getCookie("token"))
+	// alert(getCookie("roottoken"))
 	getstatus()
 })
 
@@ -9,7 +9,7 @@ $(function() {
 function getstatus() {
 
 	myget(getLogin, {
-		token: getCookie("token")
+		token: getCookie("roottoken")
 	}, function(data) {
 		console.log(data)
 		if (data.code == 200) {
@@ -67,7 +67,7 @@ function Login(type) {
 	console.log("type" + type);
 	
 	mypost1(setLogin, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		status: type,
 	}, function(data) {
 		alert("修改成功")
@@ -81,7 +81,7 @@ function Login(type) {
 function Post(type) {
 	console.log("type" + type)
 	mypost1(setUserPost, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 
 		status: type
 	}, function(data) {
@@ -98,7 +98,7 @@ function Post(type) {
 function Comment(type) {
 	console.log("type" + type)
 	mypost1(setUserComment, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 	
 		status: type
 	}, function(data) {
@@ -114,7 +114,7 @@ function poststatus(type) {
 	console.log("type" + type);
 	
 	mypost1(setpoststatus, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		status: type,
 	}, function(data) {
 		alert("修改成功")
@@ -129,7 +129,7 @@ function Register(type) {
 
 	console.log("type" + type)
 	mypost1(setRegister, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		status: type,
 	}, function(data) {
 		getstatus()

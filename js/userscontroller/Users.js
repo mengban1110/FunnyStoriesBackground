@@ -9,7 +9,7 @@ $(function() {
  */
 function getinfo(page,size) {
 	mypost(getUsersInfo, {
-		token: getCookie("token"),
+		token: getCookie("roottoken"),
 		size:size,
 		page:page
 	}, function(data) {
@@ -46,7 +46,7 @@ function search(page,size){
 		getinfo();
 	}else{
 		mypost(getUsersInfo, {
-			token: getCookie("token"),
+			token: getCookie("roottoken"),
 			word: $("#placeholderInput").val(),
 			size:size,
 			page:page
@@ -114,7 +114,7 @@ function goPage(userid) {
 }
 
 function godel(userid){
-	mypost(delUserData,{"uid":userid,"token":getCookie("token")},function(data){
+	mypost(delUserData,{"uid":userid,"token":getCookie("roottoken")},function(data){
 		console.log(data);
 		if(data.code == 200){
 			alert("删除成功");
