@@ -94,7 +94,7 @@ function add(no, type, posttext, postimg, postvideo, createtime, postid, placana
 		'<th scope="row">' + no + '</th>' +
 		'<td class="text-truncate">' + placaname + '</td>' +
 		'<td class="text-truncate">' + type + '</td>' +
-		'<td class="text-truncate">' + posttext + '</td>' +
+		'<td class="text-truncate">' + strlen(posttext) + '</td>' +
 		'<td class="text-truncate">' + imgFlag + '</td>' +
 		'<td class="text-truncate">' + videoFlag + '</td>' +
 		'<td class="text-truncate">' + createtime + '</td>' +
@@ -375,4 +375,26 @@ function searchPagezz(){
 			});
 		});
 	})
+}
+
+
+function strlen(str){
+    var len = 0;
+	var re='';
+    for (var i=0; i<str.length; i++) { 
+     var c = str.charCodeAt(i); 
+    //单字节加1 
+     if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)) { 
+       len++; 
+     } 
+     else { 
+      len+=2; 
+     } 
+    } 
+   if(len>30){
+	    re = str.slice(0,25)+'......(被省略)'
+	}else{
+		re = str
+	}
+	return re;
 }
