@@ -20,7 +20,7 @@ function restart() {
 		$.ajax({
 			url: domain + restartServer,
 			data: {
-				token: getCookie("token")
+				token: getCookie("roottoken")
 			},
 			type: 'POST',
 			dataType: 'JSON',
@@ -61,7 +61,7 @@ function uploadApk() {
 	var formzz = document.getElementById('form1');
 	var formData = new FormData(formzz);
 	formData.append("path", $("#myfile").get(0).files[0]);
-	var formStr = JSON.stringify(getCookie("token"));
+	var formStr = JSON.stringify(getCookie("roottoken"));
 	formData.set('token', formStr);
 	console.log(formData)
 	$.ajax({
@@ -87,9 +87,9 @@ function eiditUser() {
 	if(useravatar != undefined){
 		formData.append("path", useravatar);
 	}
-	var formStr = JSON.stringify(getCookie("token"));
+	var formStr = JSON.stringify(getCookie("roottoken"));
 	
-	formData.set('token', getCookie("token"));
+	formData.set('token', getCookie("roottoken"));
 	formData.set('username',$("#input_username").val());
 	formData.set('password',$("#input_password").val());
 	formData.set('usersex',$("#input_usersex").val());
@@ -120,7 +120,7 @@ function addADV(){
 	var formzz = document.getElementById('form1');
 	var formData = new FormData(formzz);
 	formData.append("path", $("#myfile").get(0).files[0]);
-	formData.set('token', getCookie("token"));
+	formData.set('token', getCookie("roottoken"));
 	formData.set('acontext',$("#input_acontext").val());
 	
 	$.ajax({
