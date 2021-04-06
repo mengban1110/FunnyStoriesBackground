@@ -15,7 +15,7 @@ function getstatus() {
 		if (data.code == 200) {
 		
 			var status;
-			if (data.data.login == 0) {
+			if (data.data.login == 1) {
 				status = "未限制登录..."
 			} else {
 				status = "限制登录中..."
@@ -23,7 +23,7 @@ function getstatus() {
 			
 			
 			$("#Loginstatus").text(status)
-			if (data.data.open == 0) {
+			if (data.data.open == 1) {
 				status = "未限制网站运营..."
 			} else {
 				status = "限制网站运营中..."
@@ -31,21 +31,21 @@ function getstatus() {
 			$("#poststatusstatus").text(status)
 			
 			
-			if (data.data.register == 0) {
+			if (data.data.register == 1) {
 				status = "未限制注册..."
 			} else {
 				status = "限制注册中..."
 			}
 			$("#Registerstatus").text(status)
 			
-			if (data.data.post == 0) {
+			if (data.data.post == 1) {
 				status = "未限制发帖..."
 			} else {
 				status = "限制发帖中..."
 			}
 			$("#Poststatus").text(status)
 			
-			if (data.data.comment == 0) {
+			if (data.data.comment == 1) {
 				status = "未限制评论..."
 			} else {
 				status = "限制评论中..."
